@@ -152,7 +152,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <p>Actualize CRM &copy; 2016</p>
+              <p>Actualize CRM &copy; <span id="year"></span></p>
             </div>
             <div class="col-sm-6 text-right">
               <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
@@ -172,6 +172,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="/assets/js/charts-home.js"></script>
     <script src="/assets/js/front.js"></script>
-
+    <script type="text/javascript">$("#year").html(new Date().getFullYear())</script>
   </body>
 </html>
