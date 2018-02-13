@@ -75,10 +75,12 @@
           <h2 class="h5 display">Post-Call Records</h2>
         </div>
         <div class="update-lead-form">
-          <div class="form-group">
-            <%= f.label :latest_outreach %> TESTING
-            <%= f.text_field :outreach.text, class: "form-control form-control-warning" %>
-          </div>
+          <%= fields_for :outreach do |outreach_fields| %>
+            <div class="form-group">
+              <%= f.label :latest_outreach %>
+              <%= f.text_field :latest_outreach, class: "form-control form-control-warning" %>
+            </div>
+          <% end %>
           <div class="form-group">
             <div class="i-checks">
               <%= f.label :connected, "Connected?" %>
