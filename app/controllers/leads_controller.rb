@@ -118,6 +118,16 @@ class LeadsController < ApplicationController
     render nothing: true
   end
 
+  # Send an automated text to a lead:
+  def autotext
+    @client = Twilio::REST::Client.new
+    @client.messages.create(
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: params[:phone],
+      body: "Hi #{params[:first_name]}! This is Rena from Actualize. Do you have a minute to chat?"
+    )
+  end
+
   def no_leads
   end
 

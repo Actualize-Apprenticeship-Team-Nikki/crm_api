@@ -32,15 +32,19 @@
               <button id="button-call" class="btn btn-primary">Call</button>
               <button id="button-hangup" class="btn btn-danger">Hangup</button>
             </div>
+
             <div id="log"></div>
             <div class="d-flex align-items-center">
               <h2 class="h5 display">Auto Text</h2>
             </div>
+
+            <%= form_tag "/autotext", {class: "form-horizontal text-form"} do %>
             <div class="form-group row">
               <div class="col-sm-2">
                 <%= submit_tag "Send Auto-Text", {class: " btn btn-info"} %>
               </div>
             </div> 
+            <% end %>
 
             <div id="log"></div>
             <div class="card-header d-flex align-items-center">
