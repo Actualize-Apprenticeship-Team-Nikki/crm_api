@@ -76,6 +76,10 @@
         </div>
         <div class="update-lead-form">
           <div class="form-group">
+            <%= f.label :latest_outreach %> TESTING
+            <%= f.text_field :outreach.text, class: "form-control form-control-warning" %>
+          </div>
+          <div class="form-group">
             <div class="i-checks">
               <%= f.label :connected, "Connected?" %>
               <%= f.check_box :connected %>
