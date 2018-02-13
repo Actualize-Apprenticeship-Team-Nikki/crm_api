@@ -74,11 +74,11 @@
         <div class="card-header d-flex align-items-center">
           <h2 class="h5 display">Post-Call Records</h2>
         </div>
-        <div class="update-lead-form">
+        <div class="update-lead-form form-horizontal text-form">
           <%= fields_for :outreach do |outreach_fields| %>
-            <div class="form-group">
-              <%= f.label :latest_outreach %>
-              <%= f.text_field :latest_outreach, class: "form-control form-control-warning" %>
+            <div class="form-group row">
+              <%= f.label :latest_outreach, class: "col-sm-3" %>
+              <%= f.text_field :latest_outreach, class: "form-control form-control-warning col-sm-9" %>
             </div>
           <% end %>
           <div class="form-group">
