@@ -1,7 +1,3 @@
-<style type="text/css">
-  .hidden
-</style>
-
 <div id="app">
   <section class="charts">
     <div class="container-fluid">
@@ -26,17 +22,18 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Appointment Date</th>
+                <th v-on:click="check()">Appointment Date</th>
               </tr>
             </thead>
             <tbody>
-              <template v-for="lead in leads">
-                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active: lead.clicked}">
+              <template v-for="lead in leads" >
+                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active : lead.clicked, test : true}">
                     <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                     <td>{{ lead.first_name }}</td>
                     <td>{{ lead.last_name }}</td>
                     <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
                     <td>{{ lead.phone }}</td>
+                    <td>{{ lead.clicked }}</td>
                     <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   </tr>
                   <template v-for="event in lead.events">

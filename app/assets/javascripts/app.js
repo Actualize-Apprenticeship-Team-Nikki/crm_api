@@ -20,15 +20,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return moment(date);
       },
       accordion: function(leadId) {
-        var lead = this.leads.filter(function(lead) {
-          return lead.id === leadId;
-        })[0];
-        if (!lead.clicked) {
-          lead.clicked = true;
-        } else {
-          lead.clicked = !lead.clicked;
-        }
-        console.log(lead.clicked);
+        this.leads.forEach(function(lead) {
+          if (lead.id === leadId) {
+            lead.clicked = true;
+            console.log(lead.clicked);
+          }
+        });
+        // console.log(this.lead);
+      },
+      check: function() {
+        console.log(this.leads);
       }
     },
     computed: {}
