@@ -26,14 +26,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="lead in leads">
-                <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                <td>{{ lead.first_name }}</td>
-                <td>{{ lead.last_name }}</td>
-                <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
-                <td>{{ lead.phone }}</td>
-                <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
-              </tr>
+              <!-- <div > -->
+                <tr v-for="lead in leads" v-on:click="accordion()">
+                  <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                  <td>{{ lead.first_name }}</td>
+                  <td>{{ lead.last_name }}</td>
+                  <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
+                  <td>{{ lead.phone }}</td>
+                  <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                </tr>
+              <!-- </div> -->
             </tbody>
           </table>
         </div>
