@@ -123,7 +123,7 @@ class LeadsController < ApplicationController
     @client = Twilio::REST::Client.new
     @client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
-      to: params[:phone],
+      to: "2243053960",
       body: "Hi #{params[:first_name]}! This is Rena from Actualize. Do you have a minute to chat?"
     )
   end
