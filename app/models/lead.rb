@@ -1,5 +1,6 @@
 class Lead < ApplicationRecord
   has_many :events
+  has_many :outreaches
 
   before_save :standardize_phone
 
@@ -30,6 +31,9 @@ class Lead < ApplicationRecord
     return 'not called' unless self.process_time
     number_of_seconds = self.process_time - self.created_at
     return "#{(number_of_seconds / 60).to_i} minutes"
+  end
+
+  def latest_outreach
   end
 
   # Reset a lead as if it's brand new. This is useful for manual testing.
