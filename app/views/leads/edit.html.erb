@@ -40,6 +40,7 @@
 
             <%= form_tag "/autotext", {class: "form-horizontal text-form"} do %>
             <div class="form-group row">
+              <%= hidden_field_tag :phone, @lead.phone %>
               <div class="col-sm-2">
                 <%= submit_tag "Send Auto-Text", {class: " btn btn-info"} %>
               </div>
