@@ -31,7 +31,7 @@
             </thead>
             <tbody>
               <template v-for="lead in leads">
-                  <tr v-on:click="accordion()" class='button'>
+                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active: lead.clicked}">
                     <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                     <td>{{ lead.first_name }}</td>
                     <td>{{ lead.last_name }}</td>
@@ -40,7 +40,7 @@
                     <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   </tr>
                   <template v-for="event in lead.events">
-                    <tr class='view'>
+                    <tr >
                       <td>{{event.name}} {{moment(event.created_at)}}</td>
                     </tr>
                   </template>

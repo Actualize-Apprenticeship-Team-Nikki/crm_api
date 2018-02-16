@@ -19,8 +19,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
       moment: function(date) {
         return moment(date);
       },
-      accordion: function() {
-        console.log("hello");
+      accordion: function(leadId) {
+        var lead = this.leads.filter(function(lead) {
+          return lead.id === leadId;
+        })[0];
+        if (!lead.clicked) {
+          lead.clicked = true;
+        } else {
+          lead.clicked = !lead.clicked;
+        }
+        console.log(lead.clicked);
       }
     },
     computed: {}
