@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         url: "https://www.google.com/"
       };
     },
-    created: function() {
+    mounted: function() {
       $.get("/api/v1/leads.json").success(
         function(response) {
           this.leads = response;
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             console.log(lead.clicked);
           }
         });
-        // console.log(this.lead);
+        console.log(this.leads);
       },
       check: function() {
         console.log(this.leads);
