@@ -120,12 +120,19 @@ class LeadsController < ApplicationController
 
   # Send an automated text to a lead:
   def autotext
-    @client = Twilio::REST::Client.new
-    @client.messages.create(
-      from: ENV['TWILIO_PHONE_NUMBER'],
-      to: "2243053960",
-      body: "Hi #{params[:first_name]}! This is Rena from Actualize. Do you have a minute to chat?"
-    )
+    begin
+      @client = Twilio::REST::Client.new
+      @client.messages.create(
+        from: ENV['TWILIO_PHONE_NUMBER'],
+        to: params[:phone],
+        body: "Hi #{params[:first_name]}! This is Rena from Actualize. Do you have a minute to chat?"
+      )
+      flash[:success] = "Auto text sent!"
+    rescue Twilio::REST::RequestError => e
+      puts e.message
+      flash[:danger] = e.message
+    end
+    redirect_to action: "edit", id: params['lead_id']
   end
 
   def no_leads

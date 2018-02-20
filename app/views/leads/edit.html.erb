@@ -42,6 +42,8 @@
             <div class="form-group row">
               <%= hidden_field_tag :phone, @lead.phone %>
               <%= hidden_field_tag :first_name, @lead.first_name %>
+              <%= hidden_field_tag :lead_id, @lead.id %>
+              
               <div class="col-sm-2">
                 <%= submit_tag "Send Auto-Text", {class: " btn btn-info", id: "autotext"} %>
               </div>
@@ -164,11 +166,6 @@
     .fail(function () {
       log('Could not get a token from server!');
     });
-
-  // Auto-text sent message 
-  document.getElementById('autotext').onclick = function () {
-    alert("Auto text sent!");
-  };
 
   // Bind button to make call
   document.getElementById('button-call').onclick = function () {
