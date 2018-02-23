@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if ($(".accordion-" + lead.id).css("display") !== "none") {
               $(".accordion-" + lead.id).css("display", "none");
             } else {
+              console.log("YAY");
               $(".accordion-" + lead.id).css("display", "table-row");
             }
           }
