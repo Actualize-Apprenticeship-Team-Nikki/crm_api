@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       $.get("/api/v1/leads.json").success(
         function(response) {
           this.leads = response;
-          console.log(this.leads);
         }.bind(this)
       );
     },
@@ -28,16 +27,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if ($(".accordion-" + lead.id).css("display") !== "none") {
               $(".accordion-" + lead.id).css("display", "none");
             } else {
-              console.log("YAY");
               $(".accordion-" + lead.id).css("display", "table-row");
             }
           }
         });
-        console.log(this.leads);
       },
-      check: function() {
-        console.log(this.leads);
-      }
+      check: function() {}
     },
     computed: {}
   });
