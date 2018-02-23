@@ -2,7 +2,7 @@ class Api::V1::LeadsController < ApplicationController
 
   def index
     @leads = Lead.all
-    render "index.json.jbuilder"
+    render json: @leads.as_json
   end
 
   def show
