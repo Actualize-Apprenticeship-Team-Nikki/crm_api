@@ -1,4 +1,4 @@
-/* global Vue */
+/* global Vue, moment, $ */
 document.addEventListener("DOMContentLoaded", function(event) {
   var app = new Vue({
     el: "#app",
@@ -24,8 +24,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       accordion: function(leadId) {
         this.leads.forEach(function(lead) {
           if (lead.id === leadId) {
-            lead.clicked = true;
-            console.log(lead.clicked);
+            lead.clicked = !lead.clicked;
+            if ($(".accordion-" + lead.id).css("display") !== "none") {
+              $(".accordion-" + lead.id).css("display", "none");
+            } else {
+              $(".accordion-" + lead.id).css("display", "table-row");
+            }
           }
         });
         console.log(this.leads);

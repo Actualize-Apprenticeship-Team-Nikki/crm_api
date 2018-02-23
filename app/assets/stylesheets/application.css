@@ -94,6 +94,16 @@
   margin: 0 auto;
 }
 
-.active {
-  color: green;
+/*.active ~ tr {
+  color: blue;
+  height: 0px;
+}*/
+
+.accordion {
+  display: none;
+}
+
+.full-length {
+
+  width: 10000px;
 }
