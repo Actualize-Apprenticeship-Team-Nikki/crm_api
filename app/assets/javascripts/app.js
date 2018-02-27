@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     data: {
       leads: [],
       time_format: "12/25/17",
-      url: "https://www.google.com/"
+      url: "https://www.google.com/",
+      searchFilter: ""
     },
     mounted: function() {
       $.get("/api/v1/leads.json").success(
@@ -32,6 +33,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
       },
       check: function() {}
     },
-    computed: {}
+    computed: {
+      filteredList() {
+        return this.leads.filter(lead => {
+          return (
+            lead.first_name
+              .toLowerCase()
+              .includes(this.searchFilter.toLowerCase()) ||
+            lead.last_name
+              .toLowerCase()
+              .includes(this.searchFilter.toLowerCase()) ||
+            lead.email.toLowerCase().includes(this.searchFilter.toLowerCase())
+          );
+        });
+      }
+    }
   });
 });
