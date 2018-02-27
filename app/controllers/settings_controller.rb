@@ -1,14 +1,14 @@
 class SettingsController < ApplicationController
   def index
     @settings_active = "active"
-    unless Setting.find_by(admin_id: 1) #hard coded as one because the site overall seems to support only one user
-      Setting.create(admin_id: 1)
+    unless Setting.find_by(admin_id: current_admin.id) #hard coded as one because the site overall seems to support only one user
+      Setting.create(admin_id: current_admin.id)
     end
-    @settings = Setting.find_by(admin_id: 1)
+    @settings = Setting.find_by(admin_id: current_admin.id)
   end
 
   def update
-    @settings = Setting.find_by(admin_id: 1)
+    @settings = Setting.find_by(admin_id: current_admin.id)
     new_content = params["settings"]["auto_text_content"]
     @settings.auto_text_content = new_content
     if @settings.save
