@@ -5,12 +5,10 @@
 </head>
 <body>
   <h1>Settings</h1>
-  <form>
-    Auto-text message:
-    <input type="text" name="autotext">
-    <br>
-    <button class="btn btn-info" >Save</button>
+    <%= form_for :settings, url: "/settings", html: {method: "patch"} do |f| %>
+    Auto-text message: <%= f.text_field :auto_text_content%>
+    <%= f.submit %>
+<% end %>
 
-  </form>
 </body>
 </html>
