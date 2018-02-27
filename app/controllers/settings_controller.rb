@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController
   def index
     @settings_active = "active"
-    unless Setting.find_by(admin_id: current_admin.id) #hard coded as one because the site overall seems to support only one user
+    unless Setting.find_by(admin_id: current_admin.id)
       Setting.create(admin_id: current_admin.id)
     end
     @settings = Setting.find_by(admin_id: current_admin.id)
