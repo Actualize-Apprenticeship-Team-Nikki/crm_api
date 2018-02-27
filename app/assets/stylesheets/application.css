@@ -48,12 +48,14 @@
   margin-bottom: 20px !important;
 }
 
-.text-form, #call-controls, #log {
+.text-form,
+#call-controls,
+#log {
   padding: 12px 20px;
 }
 
 #phone-number {
-  border-radius: .25rem !important;
+  border-radius: 0.25rem !important;
   margin-bottom: 10px;
 }
 
@@ -61,13 +63,14 @@
   margin-bottom: 10px;
 }
 
-.btn-primary, .btn-info {
+.btn-primary,
+.btn-info {
   font-size: 1rem !important;
   border-radius: 0.25rem !important;
 }
 
 #phone {
-  border-radius: .25rem !important;
+  border-radius: 0.25rem !important;
   margin-bottom: 10px;
 }
 
@@ -76,11 +79,11 @@
 }
 
 .update-lead-form input {
-  border-radius: .25rem !important;
+  border-radius: 0.25rem !important;
 }
 
 #lead_notes {
-    height: 200px;
+  height: 200px;
 }
 
 .update-btn {
@@ -89,4 +92,17 @@
 
 #update-btn-col {
   margin: 0 auto;
+}
+
+/*.active ~ tr {
+  color: blue;
+  height: 0px;
+}*/
+
+.accordion {
+  display: none;
+}
+
+.full-length {
+  width: 10000px;
 }
