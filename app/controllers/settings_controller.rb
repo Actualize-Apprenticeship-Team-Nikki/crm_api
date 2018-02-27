@@ -12,10 +12,10 @@ class SettingsController < ApplicationController
     new_content = params["settings"]["auto_text_content"]
     @settings.auto_text_content = new_content
     if @settings.save
+      flash[:success] = "Settings Saved!"
       redirect_to '/'
     else
-      redirect_to '/settings/edit'
-
+      redirect_to "/settings/edit"
     end
   end
 
