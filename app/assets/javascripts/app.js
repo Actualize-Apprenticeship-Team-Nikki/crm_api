@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     data: {
       leads: [],
       time_format: "12/25/17",
-      url: "https://www.google.com/"
+      url: "https://www.google.com/",
+      searchFilter: ""
     },
     mounted: function() {
       $.get("/api/v1/leads.json").success(
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       moment: function(date) {
         return moment(date);
       }
-      // post: function() {
+      // leads: function() {
       //   constructor(first_name, last_name, email) {
       //     this.leads.first_name = first_name;
       //     this.leads.last_name = last_name;
@@ -28,10 +29,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
       // }
     },
     computed: {
-      // filteredList() {
-      // return this.postList.filter(post => {
-      //   return post.title.toLowerCase().includes(this.search.toLowerCase()) })
-      //   }
+      filteredList() {
+        return this.leads.filter(lead => {
+          return (
+            lead.first_name
+              .toLowerCase()
+              .includes(this.searchFilter.toLowerCase()) ||
+            lead.last_name
+              .toLowerCase()
+              .includes(this.searchFilter.toLowerCase()) ||
+            lead.email.toLowerCase().includes(this.searchFilter.toLowerCase())
+          );
+        });
+      }
     }
   });
 });
