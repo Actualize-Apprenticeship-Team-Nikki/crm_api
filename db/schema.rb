@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213002129) do
+ActiveRecord::Schema.define(version: 20180223015732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,13 @@ ActiveRecord::Schema.define(version: 20180213002129) do
     t.integer  "lead_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer  "admin_id"
+    t.text     "auto_text_content"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_foreign_key "events", "leads"
