@@ -115,7 +115,7 @@ class LeadsController < ApplicationController
       body: params[:body]
     )
 
-    render nothing: true
+    redirect_to action: "edit", id: params['lead_id']
   end
 
   # Send an automated text to a lead:
