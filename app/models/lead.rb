@@ -37,17 +37,15 @@ class Lead < ApplicationRecord
   end
 
   def has_outreaches
-    self.outreaches.length > 0
+    !outreaches.empty?
   end
 
   def has_events
-    self.events.length > 0
+    !events.empty?
   end
 
   def event_since_last_outreach
-    if has_outreaches && has_events
-      self.outreaches.last.created_at < self.events.last.created_at
-    end
+    has_outreaches && has_events && outreaches.last.created_at < events.last.created_at
   end
 
   # Reset a lead as if it's brand new. This is useful for manual testing.
