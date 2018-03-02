@@ -105,3 +105,7 @@
 .leads-table tr.no_outreaches {
   background-color: #f7c204;
 }
+
+.leads-table tr.newer_event {
+  background-color: #0cc6f4;
+}
