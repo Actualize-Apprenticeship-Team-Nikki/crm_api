@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         leads: [],
         time_format: "12/25/17",
         url: "https://www.google.com/",
+        searchFilter: "",
         sorted: {
           created: false,
           first_name: false,
@@ -108,7 +109,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
       },
       check: function() {}
     },
-    computed: {}
+    computed: {
+      filteredList() {
+        return this.leads.filter(lead => {
+          return (
+            lead.first_name
+              .toLowerCase()
+              .includes(this.searchFilter.toLowerCase()) ||
+            lead.last_name
+              .toLowerCase()
+              .includes(this.searchFilter.toLowerCase()) ||
+            lead.email.toLowerCase().includes(this.searchFilter.toLowerCase())
+          );
+        });
+      }
+    }
   });
 });
 
