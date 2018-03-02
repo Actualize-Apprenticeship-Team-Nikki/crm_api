@@ -27,7 +27,7 @@
             </thead>
             <tbody>
               <template v-for="lead in leads">
-                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active : lead.clicked, test : true, no_outreaches : !lead.has_outreaches}" class='hello'>
+                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active : lead.clicked, test : true, no_outreaches : !lead.has_outreaches, newer_event : lead.event_since_last_outreach}" class='hello'>
                     <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                     <td>{{ lead.first_name }}</td>
                     <td>{{ lead.last_name }}</td>
