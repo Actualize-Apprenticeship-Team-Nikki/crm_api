@@ -17,12 +17,12 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th colspan="1">Created</th>
-                <th colspan="1">First Name</th>
-                <th colspan="1">Last Name</th>
-                <th colspan="1">Email</th>
-                <th colspan="1">Phone</th>
-                <th colspan="1">Appointment Date</th>
+                <th colspan="1" v-on:click="first_name_sort">Created</th>
+                <th colspan="1" v-on:click="first_name_sort">First Name</th>
+                <th colspan="1" v-on:click="last_name_sort">Last Name</th>
+                <th colspan="1" v-on:click="email_sort">Email</th>
+                <th colspan="1" v-on:click="phone_sort">Phone</th>
+                <th colspan="1" v-on:click="appointment_date_sort">Appointment Date</th>
               </tr>
             </thead>
             <tbody>
