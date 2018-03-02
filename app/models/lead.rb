@@ -36,8 +36,8 @@ class Lead < ApplicationRecord
   def latest_outreach
   end
 
-  def has_outreaches?
-    # self.outreaches.length > 0
+  def has_outreaches
+    self.outreaches.length > 0
   end
 
   # Reset a lead as if it's brand new. This is useful for manual testing.
