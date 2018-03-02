@@ -23,9 +23,7 @@
             </thead>
             <tbody>
               <template v-for="lead in filteredList">
-                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active : lead.clicked, test : true}" class='hello'>
-              <template v-for="lead in leads">
-                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active : lead.clicked, test : true, no_outreaches : lead.outreaches.length === 0}">
+                  <tr v-on:click="accordion(lead.id)" v-bind:class="{active : lead.clicked, test : true, no_outreaches : !lead.has_outreaches}">
                     <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                     <td>{{ lead.first_name }}</td>
                     <td>{{ lead.last_name }}</td>
