@@ -94,15 +94,18 @@
   margin: 0 auto;
 }
 
-/*.active ~ tr {
-  color: blue;
-  height: 0px;
-}*/
-
 .accordion {
   display: none;
 }
 
 .full-length {
   width: 10000px;
+}
+
+.leads-table tr.no_outreaches {
+  background-color: #f7c204;
+}
+
+.leads-table tr.newer_event {
+  background-color: #0cc6f4;
 }
