@@ -1,10 +1,12 @@
 class LeadsController < ApplicationController
   before_action :authenticate_admin!, except: [:token, :voice, :text]
+    skip_before_filter  :verify_authenticity_token
 
   def index
     @all_leads_active = "active"
     @leads = Lead.where("phone <> ''").order(created_at: :desc)
     # If someone used the search box:
+    @lead = []
     @leads = Lead.where("first_name ILIKE ? OR last_name ILIKE ? OR email ILIKE ? OR phone ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(created_at: :desc) if params[:search]
   end
 
@@ -124,7 +126,7 @@ class LeadsController < ApplicationController
       @client = Twilio::REST::Client.new
       @client.messages.create(
         from: ENV['TWILIO_PHONE_NUMBER'],
-        to: params[:phone],
+        to: "19786041780",#params[:phone],
         body: "Hi #{params[:first_name].split.first}! This is Rena from Actualize. Do you have a minute to chat?"
       )
       flash[:success] = "Auto text sent!"
