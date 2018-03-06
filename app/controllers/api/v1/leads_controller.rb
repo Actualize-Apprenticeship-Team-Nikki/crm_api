@@ -1,7 +1,7 @@
 class Api::V1::LeadsController < ApplicationController
 
   def index
-    @leads = Lead.all
+    @leads = Lead.includes(:events).order("events.created_at DESC NULLS LAST")
     render "index.json.jbuilder"
   end
 
