@@ -31,10 +31,10 @@
                     <td>{{ lead.phone }}</td>
                     <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   </tr>
-                    <tr>
-                      <td>
+                    <tr v-bind:class="'accordion-' + lead.id" class = 'accordion'>
+                      <td colspan = "6">
                         <form method='post' action='/autotext'>
-                          <button type='submit'>
+                          <button class="btn btn-info" type='submit'>
                             <input type="hidden" name="phone" v-model:value=lead.phone>
                             <input type="hidden" name="first_name" v-model:value="lead.first_name">
                             <input type="hidden" name="lead_id" v-model:value=lead.id>
