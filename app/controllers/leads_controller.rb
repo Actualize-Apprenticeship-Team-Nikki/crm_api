@@ -48,6 +48,17 @@ class LeadsController < ApplicationController
                   :from => ENV['TWILIO_PHONE_NUMBER']
     })
     @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
+    convert_twilio_datetime
+  end
+
+  def convert_twilio_datetime
+    p "~~~~~~~~~~~~~" * 10
+    p @messages.each do |message|
+      if message.date_created #is in this current year
+        # DateTime.rfc2822(message.date_created).strftime("%b %e, %l:%M%P")
+      else #strf time with the year in ()
+      end
+    end
   end
 
   def update
