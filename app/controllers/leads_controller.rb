@@ -125,7 +125,7 @@ class LeadsController < ApplicationController
       @client.messages.create(
         from: ENV['TWILIO_PHONE_NUMBER'],
         to: params[:phone],
-        body: "Hi #{params[:first_name].split.first}! This is Rena from Actualize. Do you have a minute to chat?"
+        body: "Hi #{params[:first_name].split.first}! " + (current_admin.setting ? current_admin.setting.auto_text_content : "This is Rena from Actualize. Do you have a minute to chat?")
       )
       flash[:success] = "Auto text sent!"
     rescue Twilio::REST::RequestError => e
