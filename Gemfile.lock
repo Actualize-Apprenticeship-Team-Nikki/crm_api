@@ -205,7 +205,11 @@ DEPENDENCIES
   drip-ruby
   faker
   figaro
+<<<<<<< HEAD
   geocoder (>= 1.4.6)
+=======
+  geocoder (= 1.4.6)
+>>>>>>> Initial Commit for text history
   icalendar (= 2.4.1)
   jbuilder (~> 2.5)
   jquery-rails
@@ -224,4 +228,8 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
+<<<<<<< HEAD
    1.16.1
+=======
+   1.16.0
+>>>>>>> Initial Commit for text history

@@ -102,7 +102,7 @@
             </div>
             <div class="text-history">
               <% @messages.each do |message| %>
-                <div class="text-bubble alert <%= message.from == "+17734666919" ? 'alert-info' : 'alert-success' %>" role="alert"><p><%= message.body %></p></div>
+                <div class="text-bubble alert <%= message.from == "+17734666919" ? 'alert-info' : 'alert-success' %>" role="alert"><p><%= message.body %></p><p><%= message.body %></p></div>
               <% end %>
             </div>
           </div>
