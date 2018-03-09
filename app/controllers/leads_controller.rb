@@ -1,6 +1,7 @@
 class LeadsController < ApplicationController
   before_action :authenticate_admin!, except: [:token, :voice, :text]
     skip_before_filter  :verify_authenticity_token
+  include LeadsHelper
 
   def index
     @all_leads_active = "active"
@@ -49,17 +50,11 @@ class LeadsController < ApplicationController
                   :from => ENV['TWILIO_PHONE_NUMBER']
     })
     @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
-    convert_twilio_datetime
   end
 
-  def convert_twilio_datetime
-    p "~~~~~~~~~~~~~" * 10
-    p @messages.each do |message|
-      if message.date_created #is in this current year
-        # DateTime.rfc2822(message.date_created).strftime("%b %e, %l:%M%P")
-      else #strf time with the year in ()
-      end
-    end
+  def convert_twilio_datetime(date)
+    p date
+ 
   end
 
   def update
@@ -84,7 +79,6 @@ class LeadsController < ApplicationController
   # through the browser
   def token
     identity = Faker::Internet.user_name.gsub(/[^0-9a-z_]/i, '')
-
     capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     # The Twilio 
     capability.allow_client_outgoing ENV['TWILIO_TWIML_APP_SID']
