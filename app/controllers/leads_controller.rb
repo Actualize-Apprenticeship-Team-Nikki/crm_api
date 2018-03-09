@@ -51,11 +51,6 @@ class LeadsController < ApplicationController
     @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
   end
 
-  def convert_twilio_datetime(date)
-    p date
- 
-  end
-
   def update
     @lead = Lead.find_by(id: params[:id]) 
     @outreach = Outreach.new
