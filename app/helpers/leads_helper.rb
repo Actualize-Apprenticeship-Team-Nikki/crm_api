@@ -1,12 +1,12 @@
 module LeadsHelper
   def convert_twilio(date)
 
-    date2 = DateTime.rfc2822(date).strftime("%Y").to_i
+    date2 = DateTime.rfc2822(date)
 
-    if date2 == DateTime.now.year
-      DateTime.rfc2822(date).strftime("%b %e, %l:%M%P")
+    if date2.strftime("%Y").to_i == DateTime.now.year
+      date2.strftime("%b %e, %l:%M%P")
     else 
-      DateTime.rfc2822(date).strftime("(%Y) %b %e, %l:%M%P")
+      date2.strftime("(%Y) %b %e, %l:%M%P")
     end
   end
 end
