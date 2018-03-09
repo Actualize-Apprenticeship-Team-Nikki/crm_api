@@ -1,6 +1,7 @@
 class LeadsController < ApplicationController
   before_action :authenticate_admin!, except: [:token, :voice, :text]
     skip_before_filter  :verify_authenticity_token
+  include LeadsHelper
 
   def index
     @all_leads_active = "active"
@@ -73,7 +74,6 @@ class LeadsController < ApplicationController
   # through the browser
   def token
     identity = Faker::Internet.user_name.gsub(/[^0-9a-z_]/i, '')
-
     capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     # The Twilio 
     capability.allow_client_outgoing ENV['TWILIO_TWIML_APP_SID']
