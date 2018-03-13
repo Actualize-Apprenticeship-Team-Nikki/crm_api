@@ -15,11 +15,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
           email: false,
           phone: false,
           appointment_date: false
-        }
+        },
+        count: 10
       };
     },
     mounted: function() {
-      $.get("/api/v1/leads.json").success(
+      $.get("/api/v1/leads.json?count=" + this.count).success(
         function(response) {
           this.leads = response;
         }.bind(this)
@@ -107,7 +108,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
           }
         });
       },
-      check: function() {}
+      check: function() {},
+      loadNew: function() {
+        this.count += 5;
+        $.get("/api/v1/leads.json?count=" + this.count).success(
+          function(response) {
+            this.leads = response;
+          }.bind(this)
+        );
+      } //,
+      // scroll() {
+      //   window.onscroll = ev => {
+      //     loadNew();
+      //   };
+      // }
     },
     computed: {
       filteredList() {
@@ -123,6 +137,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
           );
         });
       }
+    }
+  });
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+      app.loadNew();
+      // console.log(app);
+      // console.log("bottom");
     }
   });
 });
