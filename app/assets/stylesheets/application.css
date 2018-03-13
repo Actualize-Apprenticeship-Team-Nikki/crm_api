@@ -109,3 +109,7 @@
 .leads-table tr.newer_event {
   background-color: #0cc6f4;
 }
+
+.center {
+  text-align: center;
+}

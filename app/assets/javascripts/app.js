@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
           phone: false,
           appointment_date: false
         },
-        count: 10
+        count: 50,
+        loading: false,
+        loaded: false
       };
     },
     mounted: function() {
@@ -110,18 +112,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
       },
       check: function() {},
       loadNew: function() {
-        this.count += 5;
-        $.get("/api/v1/leads.json?count=" + this.count).success(
-          function(response) {
-            this.leads = response;
-          }.bind(this)
-        );
-      } //,
-      // scroll() {
-      //   window.onscroll = ev => {
-      //     loadNew();
-      //   };
-      // }
+        if (!this.loaded) {
+          this.count += 50;
+          this.loading = true;
+          $.get("/api/v1/leads.json?count=" + this.count).success(
+            function(response) {
+              console.log("Before if");
+              if (this.leads.length !== response.length) {
+                console.log(this.leads);
+                console.log(response);
+                this.leads = response;
+                this.loading = false;
+              } else {
+                console.log("True");
+                this.loaded = true;
+              }
+            }.bind(this)
+          );
+        }
+      }
     },
     computed: {
       filteredList() {
