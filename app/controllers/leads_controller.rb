@@ -49,7 +49,8 @@ class LeadsController < ApplicationController
                   :to   => @lead.phone,
                   :from => ENV['TWILIO_PHONE_NUMBER']
     })
-    @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}.reverse
+
+    @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| DateTime.rfc2822(m.date_created)}.reverse
   end
 
   def update
