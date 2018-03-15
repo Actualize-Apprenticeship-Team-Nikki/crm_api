@@ -15,11 +15,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
           email: false,
           phone: false,
           appointment_date: false
-        }
+        },
+        count: 50,
+        loading: false,
+        loaded: false
       };
     },
     mounted: function() {
-      $.get("/api/v1/leads.json").success(
+      $.get("/api/v1/leads.json?count=" + this.count).success(
         function(response) {
           this.leads = response;
         }.bind(this)
@@ -52,7 +55,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
           }
         });
       },
-      check: function() {}
+      check: function() {},
+      loadNew: function() {
+        if (!this.loaded) {
+          this.count += 50;
+          this.loading = true;
+          $.get("/api/v1/leads.json?count=" + this.count).success(
+            function(response) {
+              console.log("Before if");
+              if (this.leads.length !== response.length) {
+                console.log(this.leads);
+                console.log(response);
+                this.leads = response;
+                this.loading = false;
+              } else {
+                console.log("True");
+                this.loaded = true;
+              }
+            }.bind(this)
+          );
+        }
+      }
     },
     computed: {
       filteredList() {
@@ -68,6 +91,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
           );
         });
       }
+    }
+  });
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+      app.loadNew();
+      // console.log(app);
+      // console.log("bottom");
     }
   });
 });

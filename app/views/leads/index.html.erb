@@ -49,6 +49,8 @@
               </template>
             </tbody>
           </table>
+          <p class="center" v-if="!loaded">Loading more</p>
+          <p class="center" v-if="loaded">Displaying all leads</p>
         </div>
       </div>
     </div>
