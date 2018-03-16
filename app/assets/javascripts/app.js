@@ -41,7 +41,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
             return test ? 1 : -1;
           }
         });
-        this.sorted[column] = !this.sorted[column];
+        this.sorted.forEach(function(col) {
+          col = false;
+        });
+        this.sorted[column] = true;
       },
       accordion: function(leadId) {
         this.leads.forEach(function(lead) {
