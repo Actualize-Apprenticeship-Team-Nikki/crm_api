@@ -13,12 +13,12 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th colspan="1" v-on:click="first_name_sort">Created</th>
-                <th colspan="1" v-on:click="first_name_sort">First Name</th>
-                <th colspan="1" v-on:click="last_name_sort">Last Name</th>
-                <th colspan="1" v-on:click="email_sort">Email</th>
-                <th colspan="1" v-on:click="phone_sort">Phone</th>
-                <th colspan="1" v-on:click="appointment_date_sort">Appointment Date</th>
+                <th colspan="1" v-on:click="columnSort('created_at')">Created</th>
+                <th colspan="1" v-on:click="columnSort('first_name')" >First Name</th>
+                <th colspan="1" v-on:click="columnSort('last_name')">Last Name</th>
+                <th colspan="1" v-on:click="columnSort('email')">Email</th>
+                <th colspan="1" v-on:click="columnSort('phone')">Phone</th>
+                <th colspan="1" v-on:click="columnSort('appointment_date')">Appointment Date</th>
               </tr>
             </thead>
             <tbody>
@@ -49,7 +49,12 @@
               </template>
             </tbody>
           </table>
+<<<<<<< HEAD
           <button v-on:click="check()">test</button>
+=======
+          <p class="center" v-if="!loaded">Loading more</p>
+          <p class="center" v-if="loaded">Displaying all leads</p>
+>>>>>>> 8f7784c3a57de0bbe80ecef8060b45e153129896
         </div>
       </div>
     </div>

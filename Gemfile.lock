@@ -206,7 +206,10 @@ DEPENDENCIES
   faker
   figaro
   geocoder (= 1.4.6)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f7784c3a57de0bbe80ecef8060b45e153129896
   icalendar (= 2.4.1)
   jbuilder (~> 2.5)
   jquery-rails
@@ -226,4 +229,7 @@ DEPENDENCIES
 
 BUNDLED WITH
    1.16.1
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8f7784c3a57de0bbe80ecef8060b45e153129896
