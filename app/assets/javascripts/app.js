@@ -107,7 +107,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
           }
         });
       },
-      check: function() {}
+      check: function() {
+        console.log(window.innerHeight, "innerHeight");
+        console.log(window.scrollY, "scrollY");
+        console.log(document.body.offsetHeight, "offsetHeight");
+        console.log(window);
+      }
     },
     computed: {
       filteredList() {

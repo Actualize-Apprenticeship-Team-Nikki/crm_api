@@ -1,3 +1,4 @@
+
 class LeadsController < ApplicationController
   before_action :authenticate_admin!, except: [:token, :voice, :text]
     skip_before_filter  :verify_authenticity_token
