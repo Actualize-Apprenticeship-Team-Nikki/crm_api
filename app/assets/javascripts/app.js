@@ -41,7 +41,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             return test ? 1 : -1;
           }
         });
-        this.sorted[column] = !this.sorted[column];
+        for (var property1 in this.sorted) {
+          if (property1 !== column) {
+            this.sorted[property1] = false;
+          } else {
+            this.sorted[column] = !this.sorted[column];
+          }
+        }
       },
       accordion: function(leadId) {
         this.leads.forEach(function(lead) {

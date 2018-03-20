@@ -2,7 +2,7 @@ class Api::V1::LeadsController < ApplicationController
 
   def index
     @leads = Lead.includes(:events).order("events.created_at DESC NULLS LAST").offset(params["count"]).limit(50)
-    render "index.json.jbuilder"
+    render json: @leads.as_json
   end
 
   def show

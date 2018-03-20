@@ -113,3 +113,8 @@
 .center {
   text-align: center;
 }
+
+.table thead th {
+  cursor: default;
+}
+
