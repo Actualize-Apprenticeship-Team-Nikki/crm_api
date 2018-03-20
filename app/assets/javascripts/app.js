@@ -71,6 +71,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }.bind(this)
           );
         }
+      },
+      scrollFunction: function() {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          document.getElementById("myBtn").style.display = "block";
+        } else {
+          document.getElementById("myBtn").style.display = "none";
+        }
+      },
+      // When the user clicks on the button, scroll to the top of the document
+      topFunction: function() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
       }
     },
     computed: {
@@ -93,8 +108,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   $(window).scroll(function() {
     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
       app.loadNew();
-      // console.log(app);
-      // console.log("bottom");
     }
+    window.onscroll = function() {
+      app.scrollFunction();
+    };
   });
 });
