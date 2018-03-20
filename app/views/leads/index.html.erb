@@ -49,6 +49,7 @@
               </template>
             </tbody>
           </table>
+          <button v-on:click="topFunction()" id="myBtn" title="Go to top">Back to Top</button>
           <p class="center" v-if="!loaded">Loading more</p>
           <p class="center" v-if="loaded">Displaying all leads</p>
         </div>
